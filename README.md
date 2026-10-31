@@ -2,6 +2,9 @@
 
 A rootless iOS 16.4 Dopamine jailbreak tweak (`PreferenceBundle` + root helper daemon) that adds a **Wi-Fi & Cellular Usage** section directly inside the native **iOS Settings** app.
 
+> [!NOTE]
+> Historic data usage calculations and metrics may not be completely accurate due to how iOS aggregates and flushes network database records.
+
 ## Features
 
 - **Native iOS Settings Integration**: Appears in the main iOS Settings list (`Wi-Fi & Cellular Usage`) via `PreferenceLoader`.
