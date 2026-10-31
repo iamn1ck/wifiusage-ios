@@ -20,12 +20,13 @@ jobs:
       - name: Install Theos & Dependencies
         run: |
           brew install ldid dpkg zstd
-          git clone --recursive https://github.com/theos/theos.git $HOME/theos
-          curl -sL https://github.com/theos/sdks/archive/master.tar.gz | tar -xz -C $HOME/theos/sdks --strip-components=1
+          pip3 install zstandard || true
+          git clone --recursive https://github.com/theos/theos.git ~/theos
+          curl -sL https://github.com/theos/sdks/archive/master.tar.gz | tar -xz -C ~/theos/sdks --strip-components=1
 
       - name: Build Rootless .deb
         env:
-          THEOS: ${{ format('{0}/theos', env.HOME) }}
+          THEOS: /Users/runner/theos
         run: |
           make clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
 
@@ -39,6 +40,9 @@ jobs:
         run: |
           mkdir -p repo_dist/debs
           cp packages/*.deb repo_dist/debs/
+
+          # Disable Jekyll so GitHub Pages serves raw files like Release and Packages
+          touch repo_dist/.nojekyll
 
           # Copy repo metadata
           cat << 'EOF' > repo_dist/Release
@@ -114,9 +118,9 @@ EOF
   <div class="card">
     <h1>n1ck's Repo</h1>
     <p>Official Sileo & APT repository for <strong>WiFiUsage</strong> (iOS 16 Dopamine rootless).</p>
-    <code>https://iamn1ck.github.io/WiFiUsage-ios/</code>
-    <a class="btn sileo" href="sileo://source/https://iamn1ck.github.io/WiFiUsage-ios/">Add to Sileo</a>
-    <a class="btn zebra" href="zbra://sources/add/https://iamn1ck.github.io/WiFiUsage-ios/">Add to Zebra</a>
+    <code>https://iamn1ck.github.io/wifiusage-ios/</code>
+    <a class="btn sileo" href="sileo://source/https://iamn1ck.github.io/wifiusage-ios/">Add to Sileo</a>
+    <a class="btn zebra" href="zbra://sources/add/https://iamn1ck.github.io/wifiusage-ios/">Add to Zebra</a>
   </div>
 </body>
 </html>
