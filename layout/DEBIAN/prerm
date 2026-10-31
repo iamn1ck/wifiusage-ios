@@ -1,0 +1,15 @@
+#!/var/jb/bin/sh
+set -e
+
+DAEMON_PLIST="/var/jb/Library/LaunchDaemons/com.n1ck.wifiusaged.plist"
+
+if [ "$1" = "remove" ] || [ "$1" = "purge" ]; then
+    if [ -f "$DAEMON_PLIST" ]; then
+        /var/jb/bin/launchctl unload "$DAEMON_PLIST" 2>/dev/null || launchctl unload "$DAEMON_PLIST" 2>/dev/null || true
+    fi
+    rm -f /var/jb/var/mobile/Library/Preferences/com.n1ck.wifiusage.snapshot.plist 2>/dev/null || true
+    rm -f /tmp/com.n1ck.wifiusage.snapshot.plist 2>/dev/null || true
+fi
+
+exit 0
+

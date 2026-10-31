@@ -1,0 +1,35 @@
+name: Build Dopamine Rootless Package
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Theos
+        run: |
+          sudo apt-get update 2>/dev/null || true
+          brew install ldid dpkg
+          git clone --recursive https://github.com/theos/theos.git $HOME/theos
+          curl -sL https://github.com/theos/sdks/archive/master.tar.gz | tar -xz -C $HOME/theos/sdks --strip-components=1
+
+      - name: Build Rootless .deb for Dopamine (iOS 16.4)
+        env:
+          THEOS: ${{ runner.os == 'macOS' && format('{0}/theos', env.HOME) || '/opt/theos' }}
+        run: |
+          make clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+
+      - name: Upload .deb Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: com.n1ck.wifiusage-rootless-deb
+          path: packages/*.deb
+

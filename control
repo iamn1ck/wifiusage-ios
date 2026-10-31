@@ -1,0 +1,10 @@
+Package: com.n1ck.wifiusage
+Name: WiFiUsage
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: View Wi-Fi and Cellular data usage split per app and system process directly inside iOS Settings, with summary and detailed breakdowns for iOS 16.4 Dopamine.
+Maintainer: n1ck
+Author: n1ck
+Section: Tweaks
+Depends: firmware (>= 15.0), preferenceloader
+
