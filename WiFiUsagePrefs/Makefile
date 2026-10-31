@@ -13,7 +13,6 @@ WiFiUsagePrefs_FILES = \
 	WiFiUsageRootListController.m
 
 WiFiUsagePrefs_FRAMEWORKS = UIKit Foundation CoreGraphics
-WiFiUsagePrefs_PRIVATE_FRAMEWORKS = Preferences
 WiFiUsagePrefs_LIBRARIES = sqlite3
 WiFiUsagePrefs_INSTALL_PATH = /Library/PreferenceBundles
 WiFiUsagePrefs_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
