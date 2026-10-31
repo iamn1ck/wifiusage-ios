@@ -5,6 +5,9 @@ A rootless iOS 16.4 Dopamine jailbreak tweak (`PreferenceBundle` + root helper d
 > [!NOTE]
 > Historic data usage calculations and metrics may not be completely accurate due to how iOS aggregates and flushes network database records.
 
+> [!WARNING]
+> **Disclaimer**: This project was developed with the assistance of AI. Use at your own risk. The authors and contributors assume no liability for any issues, data loss, or device instability that may arise from using this software.
+
 ## Features
 
 - **Native iOS Settings Integration**: Appears in the main iOS Settings list (`Wi-Fi & Cellular Usage`) via `PreferenceLoader`.
