@@ -1736,9 +1736,6 @@ NSDictionary<NSString *, id> *WUFetchDataUsageForPeriod(
     pthread_mutex_unlock(&gAllTimeCacheLock);
 
     double earliestRefTs = 0.0;
-    NSString *kFirstTs = WUStr("firstTimestamp");
-    NSString *kLastTs = WUStr("lastTimestamp");
-    NSString *kBucketHr = WUStr("bucketHour");
 
     for (NSDictionary *rec in [recordsMap allValues]) {
         double fTs = WUToReferenceTimestamp([rec[kFirstTs] doubleValue]);
